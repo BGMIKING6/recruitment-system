@@ -1,46 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Running Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(160deg,#0a1f3d,#071021);
+    color: white;
+    margin:0;
+    padding:20px;
+}
 
+h1 {
+    text-align:center;
+    margin-bottom:20px;
+    font-size:2rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+table {
+    width:100%;
+    max-width: 1000px;
+    margin:auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border:1px solid #3a6ff7;
+    padding:10px;
+    text-align:center;
+}
+
+th {
+    background: #3a6ff7;
+    color:white;
+}
+
+td img {
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.pass {
+    background-color: rgba(0,255,0,0.2);
+}
+
+.fail {
+    background-color: rgba(255,0,0,0.2);
+}
+
+button {
+    padding:5px 10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.pass-btn {
+    background:#00c851;
+    color:white;
+}
+
+.pass-btn:hover {
+    background:#009933;
+}
+
+.fail-btn {
+    background:#ff4444;
+    color:white;
+}
+
+.fail-btn:hover {
+    background:#cc0000;
+}
+
+.back-btn {
+    margin-top:20px;
+    padding:10px 20px;
+    background:#3a6ff7;
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@media screen and (max-width:480px){
+    h1{ font-size:1.5rem; }
+    th, td{ padding:6px; font-size:12px;}
+    td img { width:40px; height:40px;}
+    button { padding:4px 8px; font-size:12px;}
+    .back-btn { font-size:14px; padding:8px 16px;}
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-
 <h1>Running Test</h1>
 
 <table>
-
+<thead>
 <tr>
-<th>Select</th>
+<th>Photo</th>
 <th>Name</th>
 <th>Phone</th>
-<th>Email</th>
+<th>Qualification</th>
+<th>State</th>
+<th>Pass / Fail</th>
 </tr>
-
-<tbody id="candidateTable"></tbody>
-
+</thead>
+<tbody id="candidateList">
+<!-- Candidates will be inserted here -->
+</tbody>
 </table>
 
-<br>
+<button class="back-btn" onclick="location.href='index.html'">← Back to Dashboard</button>
 
-<button onclick="passRunning()">Pass Running</button>
-<button onclick="failRunning()">Fail Running</button>
+<script>
+// Sample candidates from localStorage (replace this with real form data fetching)
+let candidates = JSON.parse(localStorage.getItem("candidates")) || [];
 
-<br><br>
+// Render candidates
+let tbody = document.getElementById("candidateList");
+candidates.forEach((c,index)=>{
+    if(!c.name) return; // skip empty rows
 
-<a href="index.html"><button>Back</button></a>
+    let tr = document.createElement("tr");
+    tr.id = "row"+index;
+    tr.innerHTML = `
+        <td><img src="${c.photo || 'https://via.placeholder.com/50'}" alt="Photo"></td>
+        <td>${c.name}</td>
+        <td>${c.phone}</td>
+        <td>${c.qualification}</td>
+        <td>${c.state}</td>
+        <td>
+            <button class="pass-btn" onclick="passCandidate(${index})">Pass</button>
+            <button class="fail-btn" onclick="failCandidate(${index})">Fail</button>
+        </td>
+    `;
+    tbody.appendChild(tr);
+});
 
-</div>
+// Pass / Fail functions
+function passCandidate(i){
+    candidates[i].running = "Pass";
+    localStorage.setItem("candidates", JSON.stringify(candidates));
+    document.getElementById("row"+i).classList.add("pass");
+}
 
-<script src="candidates.js"></script>
-<script src="script.js"></script>
+function failCandidate(i){
+    candidates[i].running = "Fail";
+    localStorage.setItem("candidates", JSON.stringify(candidates));
+    document.getElementById("row"+i).classList.add("fail");
+}
+</script>
 
 </body>
 </html>
