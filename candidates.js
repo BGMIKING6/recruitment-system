@@ -21,7 +21,13 @@ let email = cols[3];
 let tr = document.createElement("tr");
 
 tr.innerHTML = `
-<td><input type="checkbox" class="candidate"></td>
+<td>
+<input type="checkbox" class="candidate"
+data-name="${name}"
+data-phone="${phone}"
+data-email="${email}">
+</td>
+
 <td>${name}</td>
 <td>${phone}</td>
 <td>${email}</td>
