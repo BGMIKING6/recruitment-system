@@ -19,14 +19,13 @@ function passRunning(){
 
 let selected=document.querySelectorAll(".candidate:checked");
 
-selected.forEach(c => {
+selected.forEach(c=>{
 
 let candidate={
 name:c.dataset.name,
 phone:c.dataset.phone,
-qualification:c.dataset.qual,
-running:"Passed",
-reason:"Passed Running Test"
+email:c.dataset.email,
+running:"Passed"
 };
 
 let passList=JSON.parse(localStorage.getItem("pass")) || [];
@@ -45,12 +44,12 @@ function failRunning(){
 
 let selected=document.querySelectorAll(".candidate:checked");
 
-selected.forEach(c => {
+selected.forEach(c=>{
 
 let candidate={
 name:c.dataset.name,
 phone:c.dataset.phone,
-qualification:c.dataset.qual,
+email:c.dataset.email,
 running:"Failed",
 reason:"Failed Running Test"
 };
