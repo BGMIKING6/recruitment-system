@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+<title>Admin Dashboard</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Recruitment System</title>
+<style>
 
-<link rel="stylesheet" href="style.css">
+body{
+font-family:Arial;
+background:#071021;
+color:white;
+text-align:center;
+}
+
+.dashboard button{
+padding:12px 20px;
+margin:10px;
+background:#3a6ff7;
+border:none;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="container">
-
 <h1>Recruitment Dashboard</h1>
 
 <div class="dashboard">
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScZzNJeia6KuyCcmKcPdJEd1brhbTQU5dOfaeZEgOWhfCVt8g/viewform" target="_blank">
-<button>➕ Add Candidate</button>
-</a>
-
 <a href="running.html"><button>🏃 Running Test</button></a>
-
 <a href="health.html"><button>🏥 Health Test</button></a>
-
 <a href="written.html"><button>📚 Written Exam</button></a>
-
 <a href="final.html"><button>⭐ Final Selection</button></a>
-
 <a href="pass.html"><button>✅ Pass List</button></a>
-
 <a href="fail.html"><button>❌ Fail List</button></a>
 
 <br><br>
 
 <button onclick="resetSystem()">⚠ Reset Recruitment</button>
 
-
 </div>
+
 <script>
 
 function resetSystem(){
 
-if(confirm("Do you want to clear all candidate data?")){
+if(confirm("Clear all candidate data?")){
 
-localStorage.clear()
+localStorage.clear();
 
-alert("All data cleared")
+alert("All data removed");
 
-location.reload()
+location.reload();
 
 }
 
@@ -58,6 +65,71 @@ location.reload()
 </script>
 
 </body>
+</html><!DOCTYPE html>
+<html>
 
+<head>
+<title>Admin Dashboard</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#071021;
+color:white;
+text-align:center;
+}
+
+.dashboard button{
+padding:12px 20px;
+margin:10px;
+background:#3a6ff7;
+border:none;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Recruitment Dashboard</h1>
+
+<div class="dashboard">
+
+<a href="running.html"><button>🏃 Running Test</button></a>
+<a href="health.html"><button>🏥 Health Test</button></a>
+<a href="written.html"><button>📚 Written Exam</button></a>
+<a href="final.html"><button>⭐ Final Selection</button></a>
+<a href="pass.html"><button>✅ Pass List</button></a>
+<a href="fail.html"><button>❌ Fail List</button></a>
+
+<br><br>
+
+<button onclick="resetSystem()">⚠ Reset Recruitment</button>
+
+</div>
+
+<script>
+
+function resetSystem(){
+
+if(confirm("Clear all candidate data?")){
+
+localStorage.clear();
+
+alert("All data removed");
+
+location.reload();
+
+}
+
+}
+
+</script>
+
+</body>
 </html>
-
