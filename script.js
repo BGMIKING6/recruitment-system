@@ -5,7 +5,7 @@ let pass=document.getElementById("pass").value;
 
 if(user==="admin" && pass==="1234"){
 
-window.location="index.html";
+window.location="das.html";
 
 }else{
 
@@ -78,4 +78,5 @@ location.reload();
 }
 
 }
+
 
