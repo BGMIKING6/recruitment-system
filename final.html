@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Final Selection</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+body{
+font-family:Arial;
+background:#071021;
+color:white;
+text-align:center;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:90%;
+}
+
+th,td{
+border:1px solid #3a6ff7;
+padding:10px;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+background:#3a6ff7;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>Final Selection</h1>
+<h2>Final Selection</h2>
 
 <table>
 
@@ -23,23 +47,58 @@
 <th>Refer</th>
 <th>Name</th>
 <th>Phone</th>
-<th>Running</th>
-<th>Health</th>
-<th>Written</th>
-<th>Total</th>
-<th>Details</th>
+<th>Email</th>
+<th>Status</th>
 </tr>
 
-<tbody id="finalTable"></tbody>
+<tbody id="finalList"></tbody>
 
 </table>
 
-<a href="index.html"><button>Back</button></a>
+<br>
 
-</div>
+<button onclick="location.href='index.html'">Back</button>
 
-<script src="final.js"></script>
+<script>
+
+let pass=JSON.parse(localStorage.getItem("pass")) || [];
+
+let table=document.getElementById("finalList");
+
+pass.forEach((c,index)=>{
+
+let row=document.createElement("tr");
+
+row.innerHTML=`
+
+<td>
+<input type="checkbox" onclick="referCandidate(${index})">
+</td>
+
+<td>${c.name}</td>
+<td>${c.phone}</td>
+<td>${c.email}</td>
+<td id="status${index}">${c.referred || "Pending"}</td>
+
+`;
+
+table.appendChild(row);
+
+});
+
+function referCandidate(index){
+
+let pass=JSON.parse(localStorage.getItem("pass")) || [];
+
+pass[index].referred="Referred";
+
+localStorage.setItem("pass",JSON.stringify(pass));
+
+document.getElementById("status"+index).innerText="Referred";
+
+}
+
+</script>
 
 </body>
-
 </html>
