@@ -67,4 +67,29 @@ location.reload();
 
 }
 
+
+}
+function passHealth(){
+
+let selected=document.querySelectorAll(".candidate:checked");
+
+selected.forEach(c=>{
+
+let candidate={
+name:c.dataset.name,
+phone:c.dataset.phone,
+email:c.dataset.email,
+health:"Passed"
+};
+
+let health=JSON.parse(localStorage.getItem("health")) || [];
+
+health.push(candidate);
+
+localStorage.setItem("health",JSON.stringify(health));
+
+});
+
+alert("Candidate Passed Health Test");
+
 }
