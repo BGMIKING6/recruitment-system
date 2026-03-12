@@ -1,126 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<title>Recruitment Dashboard</title>
+  <style>
+    /* ===== General Styles ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(160deg, #0a1f3d, #071021);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
 
-body{
-margin:0;
-font-family:Arial;
-background:#071021;
-color:white;
-text-align:center;
-}
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
 
-h1{
-margin-top:60px;
-font-size:40px;
-}
+    /* ===== Dashboard Buttons ===== */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      width: 100%;
+      max-width: 900px;
+    }
 
-.dashboard{
-margin-top:40px;
-}
+    .dashboard a button {
+      width: 100%;
+      padding: 15px 10px;
+      background: #3a6ff7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-weight: 600;
+    }
 
-.dashboard a{
-text-decoration:none;
-}
+    .dashboard a button:hover {
+      background: #2b52c9;
+    }
 
-.dashboard button{
+    .reset-btn {
+      background: #ff4444 !important;
+      margin-top: 30px;
+    }
 
-background:#3a6ff7;
-border:none;
-color:white;
-padding:12px 25px;
-margin:10px;
-font-size:16px;
-cursor:pointer;
-border-radius:5px;
+    .reset-btn:hover {
+      background: #cc0000 !important;
+    }
 
-}
+    /* ===== Responsive & Mobile ===== */
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
 
-.dashboard button:hover{
-background:#2b52c9;
-}
-
-.reset-btn{
-margin-top:30px;
-background:#ff4444;
-}
-
-.reset-btn:hover{
-background:#cc0000;
-}
-
-</style>
-
+      .dashboard a button {
+        padding: 12px 8px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-<h1>Recruitment Dashboard</h1>
+  <h1>Recruitment Dashboard</h1>
 
-<div class="dashboard">
+  <div class="dashboard">
 
-<a href="YOUR_GOOGLE_FORM_LINK" target="_blank">
-<button>➕ Add Candidate</button>
-</a>
+    <!-- Add Candidate (Google Form) -->
+    <a href="https://docs.google.com/forms/d/e/YOUR_FORM_LINK/viewform" target="_blank">
+      <button>➕ Add Candidate</button>
+    </a>
 
-<a href="running.html">
-<button>🏃 Running Test</button>
-</a>
+    <!-- Tests & Lists -->
+    <a href="running.html"><button>🏃 Running Test</button></a>
+    <a href="health.html"><button>🏥 Health Test</button></a>
+    <a href="written.html"><button>📚 Written Exam</button></a>
+    <a href="final.html"><button>⭐ Final Selection</button></a>
+    <a href="pass.html"><button>✅ Pass List</button></a>
+    <a href="fail.html"><button>❌ Fail List</button></a>
 
-<a href="health.html">
-<button>🏥 Health Test</button>
-</a>
+  </div>
 
-<a href="written.html">
-<button>📚 Written Exam</button>
-</a>
+  <button class="reset-btn" onclick="resetSystem()">⚠ Reset Recruitment</button>
 
-<a href="final.html">
-<button>⭐ Final Selection</button>
-</a>
-
-<a href="pass.html">
-<button>✅ Pass List</button>
-</a>
-
-<a href="fail.html">
-<button>❌ Fail List</button>
-</a>
-
-<br><br>
-
-<button class="reset-btn" onclick="resetSystem()">
-⚠ Reset Recruitment
-</button>
-
-</div>
-
-
-<script>
-
-function resetSystem(){
-
-if(confirm("Are you sure you want to reset all recruitment data?")){
-
-localStorage.clear()
-
-alert("All recruitment data cleared")
-
-location.reload()
-
-}
-
-}
-
-</script>
+  <script>
+    function resetSystem() {
+      if (confirm("Are you sure you want to reset all recruitment data?")) {
+        localStorage.clear();
+        alert("All recruitment data cleared");
+        location.reload();
+      }
+    }
+  </script>
 
 </body>
 
 </html>
-
