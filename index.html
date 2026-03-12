@@ -33,12 +33,31 @@
 
 <a href="fail.html"><button>❌ Fail List</button></a>
 
-<button onclick="resetSystem()">Reset Recruitment</button>
+<br><br>
+
+<button onclick="resetSystem()">⚠ Reset Recruitment</button>
+
 
 </div>
+<script>
 
-</div>
+function resetSystem(){
+
+if(confirm("Do you want to clear all candidate data?")){
+
+localStorage.clear()
+
+alert("All data cleared")
+
+location.reload()
+
+}
+
+}
+
+</script>
 
 </body>
 
 </html>
+
