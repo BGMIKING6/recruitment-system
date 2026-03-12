@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Pass Candidates</title>
-<link rel="stylesheet" href="style.css">
+<style>
+body{
+font-family:Arial;
+background:#071021;
+color:white;
+text-align:center;
+}
 
+table{
+margin:auto;
+border-collapse:collapse;
+width:80%;
+}
+
+th,td{
+border:1px solid #3a6ff7;
+padding:10px;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+background:#3a6ff7;
+border:none;
+color:white;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>Pass Candidates</h1>
+<h2>Passed Candidates</h2>
 
 <table>
-
 <tr>
 <th>Name</th>
 <th>Phone</th>
-<th>Qualification</th>
+<th>Email</th>
 <th>Running</th>
-<th>Status</th>
 </tr>
 
 <tbody id="passList"></tbody>
 
 </table>
 
-<a href="index.html"><button>Back</button></a>
+<br>
 
-</div>
+<button onclick="location.href='running.html'">Back</button>
 
 <script>
 
@@ -44,9 +65,8 @@ let row=document.createElement("tr");
 row.innerHTML=`
 <td>${c.name}</td>
 <td>${c.phone}</td>
-<td>${c.qualification}</td>
+<td>${c.email}</td>
 <td>${c.running}</td>
-<td>${c.reason}</td>
 `;
 
 table.appendChild(row);
