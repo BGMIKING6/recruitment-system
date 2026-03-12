@@ -93,3 +93,28 @@ localStorage.setItem("health",JSON.stringify(health));
 alert("Candidate Passed Health Test");
 
 }
+function failHealth(){
+
+let selected=document.querySelectorAll(".candidate:checked");
+
+selected.forEach(c=>{
+
+let candidate={
+name:c.dataset.name,
+phone:c.dataset.phone,
+email:c.dataset.email,
+reason:"Failed Health Test"
+};
+
+let fail=JSON.parse(localStorage.getItem("fail")) || [];
+
+fail.push(candidate);
+
+localStorage.setItem("fail",JSON.stringify(fail));
+
+});
+
+alert("Candidate Failed Health Test");
+
+}
+
