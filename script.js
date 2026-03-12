@@ -65,3 +65,17 @@ localStorage.setItem("fail",JSON.stringify(failList));
 alert("Candidate moved to FAIL list");
 
 }
+function resetSystem(){
+
+if(confirm("Reset all recruitment data?")){
+
+localStorage.clear();
+
+alert("All data cleared");
+
+location.reload();
+
+}
+
+}
+
