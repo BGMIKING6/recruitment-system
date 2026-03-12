@@ -128,7 +128,7 @@ button {
 </table>
 
 <button class="back-btn" onclick="location.href='index.html'">← Back to Dashboard</button>
-
+<button class="submit-btn" onclick="submitRunning()" style="margin-top:10px;display:block;margin:auto;padding:10px 20px;background:#00c851;border:none;border-radius:8px;color:white;font-size:16px;cursor:pointer;">💾 Submit Running Test</button>
 <script>
 // Sample candidates from localStorage (replace this with real form data fetching)
 let candidates = JSON.parse(localStorage.getItem("candidates")) || [];
@@ -166,7 +166,21 @@ function failCandidate(i){
     localStorage.setItem("candidates", JSON.stringify(candidates));
     document.getElementById("row"+i).classList.add("fail");
 }
+function submitRunning() {
+    // Check if all candidates are marked
+    let unmarked = candidates.filter(c => c.running === "");
+    if(unmarked.length > 0){
+        alert("Please mark Pass/Fail for all candidates before submitting!");
+        return;
+    }
+    // Save all to localStorage permanently
+    localStorage.setItem("candidates", JSON.stringify(candidates));
+    alert("Running test submitted successfully!");
+    // Optional: redirect to next test
+    // location.href = "health.html";
+}
 </script>
 
 </body>
 </html>
+
