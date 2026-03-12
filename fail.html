@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Failed Candidates</title>
+<style>
+body{
+font-family:Arial;
+background:#071021;
+color:white;
+text-align:center;
+}
 
-<title>Fail Candidates</title>
-<link rel="stylesheet" href="style.css">
+table{
+margin:auto;
+border-collapse:collapse;
+width:80%;
+}
 
+th,td{
+border:1px solid red;
+padding:10px;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+background:#3a6ff7;
+border:none;
+color:white;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>Fail Candidates</h1>
+<h2>Failed Candidates</h2>
 
 <table>
 
 <tr>
 <th>Name</th>
 <th>Phone</th>
-<th>Qualification</th>
-<th>Running</th>
+<th>Email</th>
 <th>Reason</th>
 </tr>
 
@@ -27,9 +49,9 @@
 
 </table>
 
-<a href="index.html"><button>Back</button></a>
+<br>
 
-</div>
+<button onclick="location.href='running.html'">Back</button>
 
 <script>
 
@@ -44,8 +66,7 @@ let row=document.createElement("tr");
 row.innerHTML=`
 <td>${c.name}</td>
 <td>${c.phone}</td>
-<td>${c.qualification}</td>
-<td>${c.running}</td>
+<td>${c.email}</td>
 <td>${c.reason}</td>
 `;
 
