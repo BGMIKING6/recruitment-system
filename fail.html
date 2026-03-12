@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Fail Candidates</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Fail Candidates</h1>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Qualification</th>
+<th>Running</th>
+<th>Reason</th>
+</tr>
+
+<tbody id="failList"></tbody>
+
+</table>
+
+<a href="index.html"><button>Back</button></a>
+
+</div>
+
+<script>
+
+let fail=JSON.parse(localStorage.getItem("fail")) || [];
+
+let table=document.getElementById("failList");
+
+fail.forEach(c=>{
+
+let row=document.createElement("tr");
+
+row.innerHTML=`
+<td>${c.name}</td>
+<td>${c.phone}</td>
+<td>${c.qualification}</td>
+<td>${c.running}</td>
+<td>${c.reason}</td>
+`;
+
+table.appendChild(row);
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Pass Candidates</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Pass Candidates</h1>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Qualification</th>
+<th>Running</th>
+<th>Status</th>
+</tr>
+
+<tbody id="passList"></tbody>
+
+</table>
+
+<a href="index.html"><button>Back</button></a>
+
+</div>
+
+<script>
+
+let pass=JSON.parse(localStorage.getItem("pass")) || [];
+
+let table=document.getElementById("passList");
+
+pass.forEach(c=>{
+
+let row=document.createElement("tr");
+
+row.innerHTML=`
+<td>${c.name}</td>
+<td>${c.phone}</td>
+<td>${c.qualification}</td>
+<td>${c.running}</td>
+<td>${c.reason}</td>
+`;
+
+table.appendChild(row);
+
+});
+
+</script>
+
+</body>
+</html>
